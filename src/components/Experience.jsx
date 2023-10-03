@@ -14,7 +14,7 @@ export default function Experience() {
         shadow-bias={-0.00012}
         shadow-mapSize={[512, 512]}
       />
-      <ScrollControls pages={4} damping={0.25}>
+      <ScrollControls pages={5} damping={0.25}>
         <Overlay />
         <Vespa />
       </ScrollControls>

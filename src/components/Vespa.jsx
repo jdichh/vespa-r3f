@@ -31,12 +31,14 @@ export function Vespa(props) {
 
     // Start from the initial camera position
     timeLine.current.set(camera.current.position, {
+      // 1
       x: initialCamera[0],
       y: initialCamera[1],
       z: initialCamera[2],
     });
 
     timeLine.current.to(camera.current.position, {
+      // 2
       duration: 3,
       x: 0.3,
       y: 0.5,
@@ -49,28 +51,38 @@ export function Vespa(props) {
       y: 0.5,
     });
 
-    // Add more animations here
+    // New timelines
     timeLine.current.to(model.current.rotation, {
+      // 3
       duration: 2,
       y: (Math.PI * 2) / 2,
       ease: "Power2.easeInOut",
     });
 
+    timeLine.current.to(model.current.rotation, {
+      // 4
+      duration: 2,
+      y: 0.3,
+      ease: "Power2.easeInOut",
+    });
+
+    timeLine.current.to(model.current.rotation, {
+      // 5
+      duration: 2,
+      y: 2,
+      ease: "Power2.easeInOut",
+    });
+
     // Ensure smooth transitions between animations
     timeLine.current.smoothChildTiming = true;
-
-    // Disable camera animation during scrolling
     timeLine.current.pause();
 
-    // Listen for scroll updates
     const updateCameraPosition = () => {
       if (scroll.offset >= 0 && scroll.offset <= 1) {
-        // Update the camera position based on the scroll offset
         timeLine.current.progress(scroll.offset);
       }
     };
 
-    // Attach the scroll event listener
     window.addEventListener("scroll", updateCameraPosition);
 
     // Clean up the event listener when the component unmounts
