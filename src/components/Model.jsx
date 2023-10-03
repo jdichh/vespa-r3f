@@ -102,7 +102,8 @@ export function Model(props) {
         model.current.rotation,
         {
           duration: 2,
-          y: Math.PI * 0.7,
+          y: Math.PI * 0.65,
+          z: -0.1,
           ease: "Power2.easeInOut",
         },
         4
@@ -111,8 +112,8 @@ export function Model(props) {
         camera.current.position,
         {
           duration: 2,
-          y: -0.3,
-          z: 8,
+          y: -0.9,
+          z: 7,
           ease: "Power2.easeInOut",
         },
         4
@@ -124,8 +125,9 @@ export function Model(props) {
         model.current.position,
         {
           duration: 2,
-          x: 0.1,
-          y: -0.4,
+          x: 0,
+          y: -0.2,
+          z: 0,
           ease: "Power2.easeInOut",
         },
         6
@@ -134,17 +136,18 @@ export function Model(props) {
         model.current.rotation,
         {
           duration: 2,
-          x: 0.9,
-          y: Math.PI * 1.8,
+          x: 0.1,
+          y: 0,
+          z: 0,
           ease: "Power2.easeInOut",
         },
         6
       )
       .to(
-        model.current.position,
+        camera.current.position,
         {
           duration: 2,
-          z: 4,
+          z: 9.5,
           ease: "Power2.easeInOut",
         },
         6
@@ -158,6 +161,17 @@ export function Model(props) {
           duration: 2,
           x: 0,
           y: 0.3,
+          z: -0.1,
+          ease: "Power2.easeInOut",
+        },
+        8
+      )
+      .to(
+        model.current.position,
+        {
+          duration: 2,
+          x: 0.2,
+          y: 0.02,
           ease: "Power2.easeInOut",
         },
         8
@@ -166,21 +180,21 @@ export function Model(props) {
         camera.current.position,
         {
           duration: 2,
-          x: -0.3,
-          y: -0.9,
-          z: 8.5,
+          y: 0,
+          z: 3,
           ease: "Power2.easeInOut",
         },
         8
-      )
+      );
+      
 
     timeLine.current
       .to(
         model.current.rotation,
         {
           duration: 2,
-          x: 0.2,
-          y: -0.8,
+          x: -0.01,
+          y: -0.9,
           ease: "Power2.easeInOut",
         },
         10
@@ -189,7 +203,8 @@ export function Model(props) {
         model.current.position,
         {
           duration: 2,
-          x: 0.2,
+          x: -0.05,
+          y: -0.05,
           ease: "Power2.easeInOut",
         },
         10
@@ -198,9 +213,7 @@ export function Model(props) {
         camera.current.position,
         {
           duration: 2,
-          x: 0.4,
-          y: -1,
-          z: 11,
+          z: 8,
           ease: "Power2.easeInOut",
         },
         10
