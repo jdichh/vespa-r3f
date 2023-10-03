@@ -1,3 +1,6 @@
+// I, the creator of this project, am NOT in any way affiliated with
+// Vespa. This is just a PERSONAL PROJECT.
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";

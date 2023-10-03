@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'open-sans': ['Open Sans', 'sans-serif'],
+        'merriweather-sans': ['Merriweather Sans', 'sans-serif'],
         'playfair-display': ['Playfair Display', 'serif']
       }
     },

@@ -1,3 +1,6 @@
+// I, the creator of this project, am NOT in any way affiliated with
+// Vespa. This is just a PERSONAL PROJECT.
+
 import React from "react";
 import Experience from "./components/Experience";
 import { Canvas } from "@react-three/fiber";
