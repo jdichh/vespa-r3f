@@ -27,8 +27,8 @@ const Section = ({ heading, description, alignStart }) => {
         <div
           className={`bg-[#EEEEEE] p-6 ${
             alignStart
-              ? "text-left rounded-r-full"
-              : "text-right rounded-l-full"
+              ? "text-left rounded-r-full border-[5px] border-l-black"
+              : "text-right rounded-l-full border-[5px] border-r-black"
           } `}
         >
           <h2 className="text-[2rem] uppercase font-playfair-display leading-none">
