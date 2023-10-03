@@ -21,7 +21,7 @@ const Section = ({ heading, description, alignStart }) => {
     <section
       className={`h-screen flex flex-col justify-start ${
         alignStart ? "items-start" : "items-end"
-      } p-2`}
+      } p-0`}
     >
       <div className="w-full h-full max-w-[400px]">
         <div
@@ -53,7 +53,7 @@ const EndCard = () => {
               width={300}
               height={300}
               loading="lazy"
-              className="p-6"
+              className="pb-6"
             />
           </h2>
           {/* <p className="bg-[#5b7c99] px-4 py-1 rounded-md font-merriweather-sans text-sm font-semibold">
@@ -61,8 +61,12 @@ const EndCard = () => {
             Vespa. This is just a PERSONAL PROJECT.
           </p> */}
         </header>
-        <h3 className="p-6 font-playfair-display flex flex-col items-end">Made by Jason Dichoso with React-Three-Fiber and GSAP. <span className="text-sm">Not affiliated with Piaggio and/or Vespa.</span></h3>
-        
+        <h3 className="pb-6 font-playfair-display flex flex-col items-end">
+          Made by Jason Dichoso with React-Three-Fiber and GSAP.{" "}
+          <span className="text-sm">
+            Not affiliated with Piaggio and/or Vespa.
+          </span>
+        </h3>
       </div>
     </section>
   );
@@ -75,7 +79,7 @@ export default function Overlay() {
         <Hero />
         <div className="h-screen" />
 
-        <div className="max-w-[1800px] mx-auto">
+        <div className="max-w-[1850px] mx-auto">
           <Section
             heading={"A Timeless Design"}
             description={
@@ -107,9 +111,8 @@ export default function Overlay() {
             }
             alignStart={false}
           />
+          <EndCard />
         </div>
-
-        <EndCard />
       </div>
     </Scroll>
   );
