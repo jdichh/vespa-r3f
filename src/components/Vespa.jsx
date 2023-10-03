@@ -1,19 +1,20 @@
-import React, { useRef, useLayoutEffect } from "react";
-import { useGLTF, useScroll } from "@react-three/drei";
+import React, { useRef, useLayoutEffect, useState } from "react";
+import { useGLTF, useScroll, PerspectiveCamera } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import Floor from "./Floor";
 
 export function Vespa(props) {
   const { nodes, materials } = useGLTF("/models/vespa.glb");
+  const [initialCamera, setInitialCamera] = useState([4, 1, 4]);
 
   const model = useRef();
+  const camera = useRef();
   const timeLine = useRef();
   const scroll = useScroll();
 
   useFrame((state, delta) => {
     timeLine.current.seek(scroll.offset * timeLine.current.duration());
-    model.current.rotation.y += delta / 4;
   });
 
   useLayoutEffect(() => {
@@ -28,40 +29,89 @@ export function Vespa(props) {
     // GSAP Setup
     timeLine.current = gsap.timeline();
 
-    timeLine.current.from(
-      model.current.position,
-      {
-        duration: 2,
-        y: -5,
-      },
-      0
-    );
+    // Start from the initial camera position
+    timeLine.current.set(camera.current.position, {
+      x: initialCamera[0],
+      y: initialCamera[1],
+      z: initialCamera[2],
+    });
+
+    timeLine.current.to(camera.current.position, {
+      duration: 3,
+      x: 0.3,
+      y: 0.5,
+      ease: "Power2.easeInOut",
+    });
+
+    // Set the end position of the camera
+    timeLine.current.set(camera.current.position, {
+      x: 0.3,
+      y: 0.5,
+    });
+
+    // Add more animations here
+    timeLine.current.to(model.current.rotation, {
+      duration: 2,
+      y: (Math.PI * 2) / 2,
+      ease: "Power2.easeInOut",
+    });
+
+    // Ensure smooth transitions between animations
+    timeLine.current.smoothChildTiming = true;
+
+    // Disable camera animation during scrolling
+    timeLine.current.pause();
+
+    // Listen for scroll updates
+    const updateCameraPosition = () => {
+      if (scroll.offset >= 0 && scroll.offset <= 1) {
+        // Update the camera position based on the scroll offset
+        timeLine.current.progress(scroll.offset);
+      }
+    };
+
+    // Attach the scroll event listener
+    window.addEventListener("scroll", updateCameraPosition);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", updateCameraPosition);
+    };
   }, []);
 
   return (
-    <group ref={model} {...props} dispose={null} rotation={[0, 0, 0]}>
-      <Floor />
-      <group scale={0.001}>
-        <group rotation={[-1.5, 0, 0]} position={[0, -300, 0]}>
-          <mesh
-            geometry={nodes.Vespa_Main_0.geometry}
-            material={materials.Main}
-          />
-          <mesh
-            geometry={nodes.Vespa_Wheel_0.geometry}
-            material={materials.Wheel}
-          />
-          <mesh
-            geometry={nodes.Vespa_Glass_0.geometry}
-            material={materials.Glass}
-          />
-          <mesh
-            geometry={nodes.Vespa_Light_0.geometry}
-            material={materials.Light}
-          />
+    <>
+      <PerspectiveCamera
+        makeDefault
+        position={initialCamera}
+        fov={20}
+        far={10}
+        ref={camera}
+      />
+      <group ref={model} {...props} dispose={null} rotation={[0, 0, 0]}>
+        <Floor />
+        <group scale={0.001}>
+          <group rotation={[-1.5, 0, 0]} position={[0, -300, 0]}>
+            <mesh
+              geometry={nodes.Vespa_Main_0.geometry}
+              material={materials.Main}
+            />
+            <mesh
+              geometry={nodes.Vespa_Wheel_0.geometry}
+              material={materials.Wheel}
+            />
+            <mesh
+              geometry={nodes.Vespa_Glass_0.geometry}
+              material={materials.Glass}
+            />
+            <mesh
+              geometry={nodes.Vespa_Light_0.geometry}
+              material={materials.Light}
+            />
+          </group>
         </group>
       </group>
-    </group>
+    </>
   );
 }
 
