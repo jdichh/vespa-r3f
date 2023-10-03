@@ -14,6 +14,8 @@ export default function App() {
             enabled: true,
             type: THREE.PCFSoftShadowMap,
           },
+          outputColorSpace: THREE.SRGBColorSpace,
+          toneMapping: THREE.ACESFilmicToneMapping,
         }}
       >
         <Experience />

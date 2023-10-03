@@ -6,7 +6,7 @@ import Floor from "./Floor";
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("/models/vespa.glb");
-  const [initialCamera, setInitialCamera] = useState([3, 0.75, 3]);
+  const [initialCamera, setInitialCamera] = useState([6, 0.5, 6]);
 
   const model = useRef();
   const camera = useRef();
@@ -46,12 +46,10 @@ export function Model(props) {
     // Section 1
     timeLine.current
       .to(
-        camera.current.position,
+        model.current.rotation,
         {
           duration: 2,
-          x: -0.3,
-          y: 0.3,
-          z: 1.7,
+          y: Math.PI * 1.7,
           ease: "Power2.easeInOut",
         },
         2
@@ -60,8 +58,20 @@ export function Model(props) {
         model.current.position,
         {
           duration: 2,
-          x: 0.3,
-          y: 0.09,
+          x: 0.1,
+          y: -0.05,
+          z: 0,
+          ease: "Power2.easeInOut",
+        },
+        2
+      )
+      .to(
+        camera.current.position,
+        {
+          duration: 2,
+          x: -0.3,
+          y: -0.8,
+          z: 7,
           ease: "Power2.easeInOut",
         },
         2
@@ -70,7 +80,8 @@ export function Model(props) {
         model.current.rotation,
         {
           duration: 2,
-          x: -0.2,
+          x: 0.2,
+          z: 0.12,
           ease: "Power2.easeInOut",
         },
         2
@@ -82,9 +93,7 @@ export function Model(props) {
         model.current.position,
         {
           duration: 2,
-          x: 0.35,
-          y: 0,
-          z: 0,
+          x: -0.1,
           ease: "Power2.easeInOut",
         },
         4
@@ -93,7 +102,7 @@ export function Model(props) {
         model.current.rotation,
         {
           duration: 2,
-          x: -0.05,
+          y: Math.PI * 0.7,
           ease: "Power2.easeInOut",
         },
         4
@@ -102,9 +111,8 @@ export function Model(props) {
         camera.current.position,
         {
           duration: 2,
-          x: 0.5,
-          y: 1.5,
-          z: 0.5,
+          y: -0.3,
+          z: 8,
           ease: "Power2.easeInOut",
         },
         4
@@ -112,35 +120,91 @@ export function Model(props) {
 
     // Section 3
     timeLine.current
-    .to(
-      model.current.position,
-      {
-        duration: 2,
-        x: -0.4,
-        y: 0,
-        ease: "Power2.easeInOut",
-      },
-      6
-    ).to(
-      model.current.rotation,
-      {
-        duration: 2,
-        y: 0.2,
-        z: 0.19,
-        ease: "Power2.easeInOut",
-      },
-      6
-    ).to(
-      camera.current.position,
-      {
-        duration: 2,
-        x: 1.75,
-        y: 0.2,
-        z: 1.75,
-        ease: "Power2.easeInOut",
-      },
-      6
-    )
+      .to(
+        model.current.position,
+        {
+          duration: 2,
+          x: 0.1,
+          y: -0.4,
+          ease: "Power2.easeInOut",
+        },
+        6
+      )
+      .to(
+        model.current.rotation,
+        {
+          duration: 2,
+          x: 0.9,
+          y: Math.PI * 1.8,
+          ease: "Power2.easeInOut",
+        },
+        6
+      )
+      .to(
+        model.current.position,
+        {
+          duration: 2,
+          z: 4,
+          ease: "Power2.easeInOut",
+        },
+        6
+      );
+
+    // Section 4
+    timeLine.current
+      .to(
+        model.current.rotation,
+        {
+          duration: 2,
+          x: 0,
+          y: 0.3,
+          ease: "Power2.easeInOut",
+        },
+        8
+      )
+      .to(
+        camera.current.position,
+        {
+          duration: 2,
+          x: -0.3,
+          y: -0.9,
+          z: 8.5,
+          ease: "Power2.easeInOut",
+        },
+        8
+      )
+
+    timeLine.current
+      .to(
+        model.current.rotation,
+        {
+          duration: 2,
+          x: 0.2,
+          y: -0.8,
+          ease: "Power2.easeInOut",
+        },
+        10
+      )
+      .to(
+        model.current.position,
+        {
+          duration: 2,
+          x: 0.2,
+          ease: "Power2.easeInOut",
+        },
+        10
+      )
+      .to(
+        camera.current.position,
+        {
+          duration: 2,
+          x: 0.4,
+          y: -1,
+          z: 11,
+          ease: "Power2.easeInOut",
+        },
+        10
+      );
 
     // Ensure smooth transitions between animations
     timeLine.current.smoothChildTiming = true;
@@ -165,11 +229,11 @@ export function Model(props) {
       <PerspectiveCamera
         makeDefault
         position={initialCamera}
-        fov={20}
+        fov={8}
         far={90}
         ref={camera}
       />
-      <group ref={model} {...props} dispose={null} rotation={[0, 0, 0]}>
+      <group ref={model} {...props} dispose={null} rotation={[0, -0.2, 0]}>
         <Floor />
         <group scale={0.001}>
           <group rotation={[-1.57, 0, 0]} position={[0, -302, 0]}>

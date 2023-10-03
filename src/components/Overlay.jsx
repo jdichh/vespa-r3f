@@ -35,11 +35,18 @@ export default function Overlay() {
   return (
     <Scroll html>
       <div className="w-screen">
-        
+
         <Hero title={"Vespa"} subTitle={"Description"} />
+
         <div className="h-screen" />
         <Section
-          heading={"Engine"}
+          heading={"Timeless Design"}
+          description={"Description"}
+          alignStart={true}
+        />
+
+        <Section
+          heading={"Lifestyle"}
           description={"Description"}
           alignStart={false}
         />
@@ -51,9 +58,15 @@ export default function Overlay() {
         />
 
         <Section
-          heading={"Suspension"}
+          heading={"Engine"}
           description={"Description"}
           alignStart={false}
+        />
+
+        <Section
+          heading={"Suspension"}
+          description={"Description"}
+          alignStart={true}
         />
       </div>
     </Scroll>
