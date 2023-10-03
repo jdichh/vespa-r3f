@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  @apply m-0 p-0;
+}
+
 #root {
-    @apply w-screen h-screen;
-    background-color: #004f7c;
+  @apply w-screen h-screen;
+  background-color: #AEC6CF;
 }

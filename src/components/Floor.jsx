@@ -24,7 +24,7 @@ export default function Floor() {
     tex.repeat.set(TEX_SCALE, TEX_SCALE);
   });
 
-  const material = new THREE.MeshLambertMaterial({
+  const material = new THREE.MeshPhysicalMaterial({
     // aoMap: aoMap,
     // aoMapIntensity: 1,
     map: colorMap,
@@ -43,7 +43,7 @@ export default function Floor() {
       receiveShadow
       castShadow
       rotation-x={-Math.PI / 2}
-      position-y={-1.047}
+      position-y={-1.05}
     />
   );
 }
