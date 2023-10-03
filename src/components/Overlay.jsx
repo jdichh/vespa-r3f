@@ -53,25 +53,33 @@ export default function Overlay() {
         <div className="h-screen" />
         <Section
           heading={"Timeless Design"}
-          description={"The Vespa's timeless design blends heritage and innovation, a classic style that's always in vogue, turning heads on every ride."}
+          description={
+            "The Vespa's timeless design blends heritage and innovation, a classic style that's always in vogue, turning heads on every ride."
+          }
           alignStart={true}
         />
 
         <Section
           heading={"Lifestyle"}
-          description={"Embrace the Vespa lifestyle - it's a unique way of life where every ride is an adventure, and your scooter is your passport to freedom."}
+          description={
+            "Embrace the Vespa lifestyle - it's a unique way of life where every ride is an adventure, and your scooter is your passport to freedom."
+          }
           alignStart={false}
         />
 
         <Section
           heading={"Comfortable Ergonomics"}
-          description={"Enjoy comfortable riding with Vespa's ergonomic design, plush seating, and a soft ride, ensuring every journey is a pleasure."}
+          description={
+            "Enjoy comfortable riding with Vespa's ergonomic design, plush seating, and a soft ride, ensuring every journey is a pleasure."
+          }
           alignStart={true}
         />
 
         <Section
           heading={"Engine"}
-          description={"The Vespa's powerful and dependable engine not only delivers performance but also efficiency, ensuring a smooth and responsive ride."}
+          description={
+            "The Vespa's powerful and dependable engine not only delivers performance but also efficiency, ensuring a smooth and responsive ride."
+          }
           alignStart={false}
         />
 

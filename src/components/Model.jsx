@@ -186,7 +186,6 @@ export function Model(props) {
         },
         8
       );
-      
 
     timeLine.current
       .to(

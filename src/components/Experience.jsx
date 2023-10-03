@@ -5,7 +5,11 @@ import Overlay from "./Overlay";
 export default function Experience() {
   return (
     <>
-      <OrbitControls enableRotate={false} enableZoom={false} enablePan={false}/>
+      <OrbitControls
+        enableRotate={false}
+        enableZoom={false}
+        enablePan={false}
+      />
       <ambientLight intensity={1.6} />
       <directionalLight
         position={[0, 1, 0]}
@@ -18,7 +22,6 @@ export default function Experience() {
         <Overlay />
         <Model />
       </ScrollControls>
-
     </>
   );
 }
