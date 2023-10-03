@@ -44,7 +44,7 @@ const Section = ({ heading, description, alignStart }) => {
 const EndCard = () => {
   return (
     <section className="flex flex-row justify-center items-center">
-      <div className="h-screen w-screen flex items-end justify-start bg-transparent">
+      <div className="h-screen w-screen flex items-end justify-between bg-transparent">
         <header className="text-center flex flex-col items-center">
           <h2>
             <img
@@ -61,6 +61,8 @@ const EndCard = () => {
             Vespa. This is just a PERSONAL PROJECT.
           </p> */}
         </header>
+        <h3 className="p-6 font-playfair-display flex flex-col items-end">Made by Jason Dichoso with React-Three-Fiber and GSAP. <span className="text-sm">Not affiliated with Piaggio and/or Vespa.</span></h3>
+        
       </div>
     </section>
   );
