@@ -15,9 +15,9 @@ export default function Floor() {
     ]
   );
 
-  const TEX_SCALE = 3;
-  const PLANE_WIDTH = 4;
-  const PLANE_HEIGHT = 3;
+  const TEX_SCALE = 1;
+  const PLANE_WIDTH = 5;
+  const PLANE_HEIGHT = 5;
 
   [colorMap, disMap, normGL, roughMap].forEach((tex) => {
     tex.wrapS = tex.wrapT = THREE.RepeatWrapping;

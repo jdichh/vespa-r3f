@@ -4,16 +4,23 @@ import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import Floor from "./Floor";
 
-export function Vespa(props) {
+export function Model(props) {
   const { nodes, materials } = useGLTF("/models/vespa.glb");
-  const [initialCamera, setInitialCamera] = useState([4, 1, 4]);
+  const [initialCamera, setInitialCamera] = useState([3, 0.75, 3]);
 
   const model = useRef();
   const camera = useRef();
   const timeLine = useRef();
   const scroll = useScroll();
 
-  useFrame((state, delta) => {
+  // With rotation
+  // useFrame((state, delta) => {
+  //   timeLine.current.seek(scroll.offset * timeLine.current.duration());
+  //   model.current.rotation.y += delta / 6;
+  // });
+
+  // No rotation
+  useFrame(() => {
     timeLine.current.seek(scroll.offset * timeLine.current.duration());
   });
 
@@ -29,49 +36,123 @@ export function Vespa(props) {
     // GSAP Setup
     timeLine.current = gsap.timeline();
 
-    // Start from the initial camera position
     timeLine.current.set(camera.current.position, {
-      // 1
       x: initialCamera[0],
       y: initialCamera[1],
       z: initialCamera[2],
-    });
-
-    timeLine.current.to(camera.current.position, {
-      // 2
-      duration: 3,
-      x: 0.3,
-      y: 0.5,
       ease: "Power2.easeInOut",
     });
 
-    // Set the end position of the camera
-    timeLine.current.set(camera.current.position, {
-      x: 0.3,
-      y: 0.5,
-    });
+    // Section 1
+    timeLine.current
+      .to(
+        camera.current.position,
+        {
+          duration: 2,
+          x: -0.3,
+          y: 0.3,
+          z: 1.7,
+          ease: "Power2.easeInOut",
+        },
+        2
+      )
+      .to(
+        model.current.position,
+        {
+          duration: 2,
+          x: 0.3,
+          y: 0.09,
+          ease: "Power2.easeInOut",
+        },
+        2
+      )
+      .to(
+        model.current.rotation,
+        {
+          duration: 2,
+          x: -0.2,
+          ease: "Power2.easeInOut",
+        },
+        2
+      );
 
-    // New timelines
-    timeLine.current.to(model.current.rotation, {
-      // 3
-      duration: 2,
-      y: (Math.PI * 2) / 2,
-      ease: "Power2.easeInOut",
-    });
+    // Section 2
+    timeLine.current
+      .to(
+        model.current.rotation,
+        {
+          duration: 2,
+          x: -0.2,
+          y: 3,
+          ease: "Power2.easeInOut",
+        },
+        4
+      )
+      .to(
+        model.current.position,
+        {
+          duration: 2,
+          x: 0.2,
+          y: 0,
+          z: 0.05,
+          ease: "Power2.easeInOut",
+        },
+        4
+      )
+      .to(
+        model.current.rotation,
+        {
+          duration: 2,
+          z: 0.1,
+          ease: "Power2.easeInOut",
+        },
+        4
+      )
+      .to(
+        camera.current.position,
+        {
+          duration: 2,
+          x: 0.3,
+          y: 2,
+          z: 0.3,
+          ease: "Power2.easeInOut",
+        },
+        4
+      );
 
-    timeLine.current.to(model.current.rotation, {
-      // 4
-      duration: 2,
-      y: 0.3,
-      ease: "Power2.easeInOut",
-    });
-
-    timeLine.current.to(model.current.rotation, {
-      // 5
-      duration: 2,
-      y: 2,
-      ease: "Power2.easeInOut",
-    });
+    // Section 3
+    timeLine.current
+      .to(
+        model.current.position,
+        {
+          duration: 2,
+          x: -0.3,
+          y: 0,
+          z: -0.2,
+          ease: "Power2.easeInOut",
+        },
+        6
+      ).to(
+        model.current.rotation,
+        {
+          duration: 2,
+          y: -0.5,
+          z: 0,
+          ease: "Power2.easeInOut",
+        },
+        6
+      )
+      .to(
+        camera.current.position,
+        {
+          duration: 2,
+          x: 0.3,
+          y: 0.3,
+          z: 2,
+          ease: "Power2.easeInOut",
+        },
+        6
+      )
 
     // Ensure smooth transitions between animations
     timeLine.current.smoothChildTiming = true;
@@ -97,13 +178,13 @@ export function Vespa(props) {
         makeDefault
         position={initialCamera}
         fov={20}
-        far={10}
+        far={90}
         ref={camera}
       />
       <group ref={model} {...props} dispose={null} rotation={[0, 0, 0]}>
         <Floor />
         <group scale={0.001}>
-          <group rotation={[-1.5, 0, 0]} position={[0, -300, 0]}>
+          <group rotation={[-1.57, 0, 0]} position={[0, -302, 0]}>
             <mesh
               geometry={nodes.Vespa_Main_0.geometry}
               material={materials.Main}
