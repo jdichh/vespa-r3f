@@ -79,22 +79,12 @@ export function Model(props) {
     // Section 2
     timeLine.current
       .to(
-        model.current.rotation,
-        {
-          duration: 2,
-          x: -0.2,
-          y: 3,
-          ease: "Power2.easeInOut",
-        },
-        4
-      )
-      .to(
         model.current.position,
         {
           duration: 2,
-          x: 0.2,
+          x: 0.35,
           y: 0,
-          z: 0.05,
+          z: 0,
           ease: "Power2.easeInOut",
         },
         4
@@ -103,7 +93,7 @@ export function Model(props) {
         model.current.rotation,
         {
           duration: 2,
-          z: 0.1,
+          x: -0.05,
           ease: "Power2.easeInOut",
         },
         4
@@ -112,9 +102,9 @@ export function Model(props) {
         camera.current.position,
         {
           duration: 2,
-          x: 0.3,
-          y: 2,
-          z: 0.3,
+          x: 0.5,
+          y: 1.5,
+          z: 0.5,
           ease: "Power2.easeInOut",
         },
         4
@@ -122,37 +112,35 @@ export function Model(props) {
 
     // Section 3
     timeLine.current
-      .to(
-        model.current.position,
-        {
-          duration: 2,
-          x: -0.3,
-          y: 0,
-          z: -0.2,
-          ease: "Power2.easeInOut",
-        },
-        6
-      ).to(
-        model.current.rotation,
-        {
-          duration: 2,
-          y: -0.5,
-          z: 0,
-          ease: "Power2.easeInOut",
-        },
-        6
-      )
-      .to(
-        camera.current.position,
-        {
-          duration: 2,
-          x: 0.3,
-          y: 0.3,
-          z: 2,
-          ease: "Power2.easeInOut",
-        },
-        6
-      )
+    .to(
+      model.current.position,
+      {
+        duration: 2,
+        x: -0.4,
+        y: 0,
+        ease: "Power2.easeInOut",
+      },
+      6
+    ).to(
+      model.current.rotation,
+      {
+        duration: 2,
+        y: 0.2,
+        z: 0.19,
+        ease: "Power2.easeInOut",
+      },
+      6
+    ).to(
+      camera.current.position,
+      {
+        duration: 2,
+        x: 1.75,
+        y: 0.2,
+        z: 1.75,
+        ease: "Power2.easeInOut",
+      },
+      6
+    )
 
     // Ensure smooth transitions between animations
     timeLine.current.smoothChildTiming = true;

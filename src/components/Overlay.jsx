@@ -35,6 +35,7 @@ export default function Overlay() {
   return (
     <Scroll html>
       <div className="w-screen">
+        
         <Hero title={"Vespa"} subTitle={"Description"} />
         <div className="h-screen" />
         <Section
@@ -44,7 +45,7 @@ export default function Overlay() {
         />
 
         <Section
-          heading={"Maneuverability"}
+          heading={"Comfortable Seats"}
           description={"Description"}
           alignStart={true}
         />
