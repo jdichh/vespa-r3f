@@ -6,9 +6,9 @@ const Hero = () => {
   return (
     <section className="flex flex-row justify-center items-center">
       <div className="h-screen w-screen flex items-center justify-center bg-[#5b7c99]">
-        <header className="text-center">
+        <header>
           <h1>
-            <img src={vespaLogo} alt="vespa logo" width={500} height={500} />
+            <img src={vespaLogo} alt="vespa logo" width={250} height={250} />
           </h1>
         </header>
       </div>
@@ -18,42 +18,45 @@ const Hero = () => {
 
 const Section = ({ heading, description, alignStart }) => {
   return (
-    <section
-      className={`h-screen flex flex-col justify-start ${
-        alignStart ? "items-start" : "items-end"
-      } p-0`}
-    >
-      <div className="w-full h-full max-w-[400px]">
-        <div
-          className={`bg-[#EEEEEE] p-6 ${
-            alignStart
-              ? "text-left rounded-r-full border-[5px] border-l-black"
-              : "text-right rounded-l-full border-[5px] border-r-black"
-          } `}
-        >
-          <h2 className="text-[2rem] uppercase font-playfair-display leading-none">
-            {heading}
-          </h2>
-          <p className="font-merriweather-sans mt-3">{description}</p>
+    <>
+      <section
+        className={`h-screen flex flex-col justify-start ${
+          alignStart ? "items-start" : "items-end"
+        } p-0`}
+      >
+        <div className="w-full h-full max-w-[300px] md:max-w-[420px]">
+          <div
+            className={`bg-[#EEEEEE] p-5 ${
+              alignStart
+                ? "text-left rounded-r-full border-[3px] border-l-black"
+                : "text-right rounded-l-full border-[3px] border-r-black"
+            } `}
+          >
+            <h2 className="text-lg md:text-2xl uppercase font-playfair-display leading-none">
+              {heading}
+            </h2>
+            <p className="font-merriweather-sans mt-3 text-xs md:text-base">
+              {description}
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
 const EndCard = () => {
   return (
     <section className="flex flex-row justify-center items-center">
-      <div className="h-screen w-screen flex items-end justify-between bg-transparent">
+      <div className="h-screen w-screen flex items-end justify-between bg-transparent pb-4">
         <header className="text-center flex flex-col items-center">
           <h2>
             <img
               src={vespaLogo}
               alt="vespa logo"
-              width={300}
-              height={300}
+              width={100}
+              height={100}
               loading="lazy"
-              className="pb-6"
             />
           </h2>
           {/* <p className="bg-[#5b7c99] px-4 py-1 rounded-md font-merriweather-sans text-sm font-semibold">
@@ -61,12 +64,12 @@ const EndCard = () => {
             Vespa. This is just a PERSONAL PROJECT.
           </p> */}
         </header>
-        <h3 className="pb-6 font-playfair-display flex flex-col items-end">
+        <h2 className="font-playfair-display flex flex-col text-right items-end text-[0.45rem] sm:text-base">
           Made by Jason Dichoso with React-Three-Fiber and GSAP.{" "}
-          <span className="text-sm">
+          <span className="sm:text-xs">
             Not affiliated with Piaggio and/or Vespa.
           </span>
-        </h3>
+        </h2>
       </div>
     </section>
   );
@@ -75,10 +78,9 @@ const EndCard = () => {
 export default function Overlay() {
   return (
     <Scroll html>
-      <div className="w-screen pointer-events-none">
-        <Hero />
+      <Hero />
+      <main className="w-screen pointer-events-none px-3">
         <div className="h-screen" />
-
         <div className="max-w-[1850px] mx-auto">
           <Section
             heading={"A Timeless Design"}
@@ -107,13 +109,13 @@ export default function Overlay() {
           <Section
             heading={"The Heart & Soul"}
             description={
-              "The Vespa 125's peppy and dependable engine not only delivers performance but also efficiency, ensuring a smooth and responsive ride."
+              "The Vespa 125's peppy and dependable heart not only delivers performance but also efficiency, giving you a smooth and responsive engine."
             }
             alignStart={false}
           />
           <EndCard />
         </div>
-      </div>
+      </main>
     </Scroll>
   );
 }
