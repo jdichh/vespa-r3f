@@ -1,6 +1,5 @@
 import { Scroll } from "@react-three/drei";
 import React from "react";
-import vespaLogo from "/images/vespalogo.png";
 
 const Hero = () => {
   return (
@@ -8,7 +7,12 @@ const Hero = () => {
       <div className="h-screen w-screen flex items-center justify-center bg-[#5b7c99]">
         <header>
           <h1>
-            <img src={vespaLogo} alt="vespa logo" width={250} height={250} />
+            <img
+              src="/images/vespalogo.png"
+              alt="vespa logo"
+              width={250}
+              height={250}
+            />
           </h1>
         </header>
       </div>
@@ -52,7 +56,7 @@ const EndCard = () => {
         <header className="text-center flex flex-col items-center">
           <h2>
             <img
-              src={vespaLogo}
+              src="/images/vespalogo.png"
               alt="vespa logo"
               width={100}
               height={100}
