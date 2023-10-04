@@ -1,11 +1,12 @@
 import { Scroll } from "@react-three/drei";
 import React from "react";
+import { AiFillDownCircle } from "react-icons/ai";
 
 const Hero = () => {
   return (
     <section className="flex flex-row justify-center items-center">
       <div className="h-screen w-screen flex items-center justify-center bg-[#5b7c99]">
-        <header>
+        <header className="flex flex-col justify-center items-center">
           <h1>
             <img
               src="/images/vespalogo.png"
@@ -14,6 +15,8 @@ const Hero = () => {
               height={250}
             />
           </h1>
+          <AiFillDownCircle size={40} color="#FFF" className="mt-6 mb-3"/>
+          <h2 className="font-playfair-display">Scroll down to continue.</h2>
         </header>
       </div>
     </section>
