@@ -6,7 +6,7 @@ import Floor from "./Floor";
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("/models/vespa.glb");
-  const [initialCamera, setInitialCamera] = useState([6, 0.5, 6]);
+  const [initialCamera, setInitialCamera] = useState([0, 0.1, 10]);
 
   const model = useRef();
   const camera = useRef();
@@ -69,8 +69,8 @@ export function Model(props) {
         camera.current.position,
         {
           duration: 2,
-          x: -0.3,
-          y: -0.8,
+          x: 0,
+          y: 0,
           z: 7,
           ease: "Power2.easeInOut",
         },
@@ -80,7 +80,7 @@ export function Model(props) {
         model.current.rotation,
         {
           duration: 2,
-          x: 0.2,
+          x: 0.1,
           z: 0.12,
           ease: "Power2.easeInOut",
         },
@@ -112,7 +112,7 @@ export function Model(props) {
         camera.current.position,
         {
           duration: 2,
-          y: -0.9,
+          y: 0,
           z: 7,
           ease: "Power2.easeInOut",
         },
@@ -245,7 +245,7 @@ export function Model(props) {
         far={90}
         ref={camera}
       />
-      <group ref={model} {...props} dispose={null} rotation={[0, -0.2, 0]}>
+      <group ref={model} {...props} dispose={null} rotation={[0, -1, 0]}>
         <Floor />
         <group scale={0.001}>
           <group rotation={[-1.57, 0, 0]} position={[0, -302, 0]}>

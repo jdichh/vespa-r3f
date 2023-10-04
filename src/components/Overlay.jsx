@@ -63,10 +63,6 @@ const EndCard = () => {
               loading="lazy"
             />
           </h2>
-          {/* <p className="bg-[#5b7c99] px-4 py-1 rounded-md font-merriweather-sans text-sm font-semibold">
-            I, the creator of this project, am NOT in any way affiliated with
-            Vespa. This is just a PERSONAL PROJECT.
-          </p> */}
         </header>
         <h2 className="font-playfair-display flex flex-col text-right items-end text-[0.45rem] sm:text-base">
           Made by Jason Dichoso with React-Three-Fiber and GSAP.{" "}
