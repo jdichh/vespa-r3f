@@ -28,7 +28,7 @@ const Section = ({ heading, description, alignStart }) => {
           alignStart ? "items-start" : "items-end"
         } p-0`}
       >
-        <div className="w-full h-full max-w-[300px] md:max-w-[420px]">
+        <div className="w-full h-full max-w-[310px] lg:max-w-[420px]">
           <div
             className={`bg-[#EEEEEE] p-5 ${
               alignStart
@@ -36,10 +36,10 @@ const Section = ({ heading, description, alignStart }) => {
                 : "text-right rounded-l-full border-[3px] border-r-black"
             } `}
           >
-            <h2 className="text-lg md:text-2xl uppercase font-playfair-display leading-none">
+            <h2 className="text-lg lg:text-2xl uppercase font-playfair-display leading-none">
               {heading}
             </h2>
-            <p className="font-merriweather-sans mt-3 text-xs md:text-base">
+            <p className="font-merriweather-sans mt-3 text-xs lg:text-base">
               {description}
             </p>
           </div>
