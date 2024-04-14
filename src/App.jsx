@@ -1,10 +1,12 @@
 // I, the creator of this project, am NOT in any way affiliated with
 // Vespa. This is just a PERSONAL PROJECT.
 
-import React from "react";
 import Experience from "./components/Experience";
 import { Canvas } from "@react-three/fiber";
 import * as THREE from "three";
+import Loading from "./components/Loading";
+import { Suspense } from "react";
+import { Html } from "@react-three/drei";
 
 export default function App() {
   return (
@@ -21,7 +23,15 @@ export default function App() {
           toneMapping: THREE.ACESFilmicToneMapping,
         }}
       >
-        <Experience />
+        <Suspense
+          fallback={
+            <Html>
+              <Loading />
+            </Html>
+          }
+        >
+          <Experience />
+        </Suspense>
       </Canvas>
     </>
   );

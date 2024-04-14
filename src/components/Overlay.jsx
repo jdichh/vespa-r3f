@@ -1,23 +1,21 @@
 import { Scroll } from "@react-three/drei";
-import React from "react";
+import vespaLogo from '/vespa_logo.webp'
 import { AiFillDownCircle } from "react-icons/ai";
 
 const Hero = () => {
   return (
     <section className="flex flex-row justify-center items-center">
       <div className="h-screen w-screen flex items-center justify-center bg-[#5b7c99]">
-        <header className="flex flex-col justify-center items-center">
-          <h1>
+        <div className="flex flex-col justify-center items-center">
             <img
-              src="/images/vespalogo.png"
+              src={vespaLogo}
               alt="vespa logo"
               width={250}
               height={250}
             />
-          </h1>
           <AiFillDownCircle size={40} color="#FFF" className="mt-6 mb-3"/>
           <h2 className="font-playfair-display">Scroll down to continue.</h2>
-        </header>
+        </div>
       </div>
     </section>
   );
@@ -59,7 +57,7 @@ const EndCard = () => {
         <header className="text-center flex flex-col items-center">
           <h2>
             <img
-              src="/images/vespalogo.png"
+              src={vespaLogo}
               alt="vespa logo"
               width={100}
               height={100}

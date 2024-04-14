@@ -5,11 +5,11 @@ import * as THREE from "three";
 
 export default function Floor() {
   const [colorMap, disMap, normGL, roughMap] = useLoader(TextureLoader, [
-    // "./floor/plastic2/Plastic015A_1K-PNG_AmbientOcclusion.png",
-    "./floor/plastic1/Plastic016A_1K-PNG_Color.png",
-    "./floor/plastic1/Plastic016A_1K-PNG_Displacement.png",
-    "./floor/plastic1/Plastic016A_1K-PNG_NormalGL.png",
-    "./floor/plastic1/Plastic016A_1K-PNG_Roughness.png",
+    // "./floor/plastic2/Plastic015A_1K-JPG_AmbientOcclusion.jpg",
+    "./floor/plastic1/Plastic016A_1K-JPG_Color.jpg",
+    "./floor/plastic1/Plastic016A_1K-JPG_Displacement.jpg",
+    "./floor/plastic1/Plastic016A_1K-JPG_NormalGL.jpg",
+    "./floor/plastic1/Plastic016A_1K-JPG_Roughness.jpg",
   ]);
 
   const TEX_SCALE = 1;
